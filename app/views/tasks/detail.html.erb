@@ -1,0 +1,36 @@
+<div class="d-flex justify-content-between align-items-center">
+<h1><%= @task.title %></h1>
+
+<%= link_to edit_path do %>
+  <button type="button" class="btn btn-outline-secondary"><i class="fa-solid fa-pen"></i> Edit</button>
+<% end %>
+
+</div>
+<div class="border-bottom pb-2">
+<p class="alert alert-secondary"><%= @task.details %></p>
+
+<% if @task.completed %>
+  <input type="checkbox" checked>
+  "This task has been completed"
+<% else %>
+  <input type="checkbox">
+  "This task has not been completed yet"
+<% end %>
+<br>
+</div>
+
+
+<br>
+<div class="d-flex justify-content-between">
+  <div>
+    <i class="fa-sharp fa-solid fa-rotate-left"></i><%= link_to "back to list", tasks_path %>
+  </div>
+
+  <div>
+    <i class="fa-solid fa-trash"></i>
+    <%= link_to "Delete this task",
+    task_path(@task),
+    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+    %>
+  </div>
+</div>
